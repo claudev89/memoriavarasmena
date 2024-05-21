@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ ucwords(strtolower(config('app.name')))  }}</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
@@ -20,10 +20,12 @@
     <div id="app">
 
         @include('navigation-menu')
-
-        <main class="py-4 col-lg-10 col-11 mx-auto">
+        <main class="container py-3">
             @yield('content')
         </main>
+        <footer>
+            @include('includes.footer')
+        </footer>
     </div>
 </body>
 </html>

@@ -1,0 +1,9 @@
+<div>
+    @include('includes.postPreview')
+    @include('includes.postPreview')
+    @include('includes.postPreview')
+    @include('includes.postPreview')
+    @include('includes.postPreview')
+    @include('includes.postPreview')
+    paginación
+</div>
