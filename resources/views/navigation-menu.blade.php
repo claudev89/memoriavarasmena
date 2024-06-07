@@ -24,11 +24,11 @@
             </form>
             @auth()
                 <div class="dropdown">
-                    <img src="{{ auth()->user()->profile_photo_url }}" class="btn btn-secondary dropdown-toggle rounded-circle p-0 ms-2 mt-0 mb-lg-0 mb-2" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="width: 3rem; height: 3rem;" />
-                    <ul class="dropdown-menu dropdown-menu-lg-end">
+                    <img src="{{ auth()->user()->profile_photo_url }}" id="userMenu" class="btn btn-secondary dropdown-toggle rounded-circle p-0 ms-2 mt-0 mb-lg-0 mb-2" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="width: 3rem; height: 3rem;" />
+                    <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="userMenu">
                         <li><span class="dropdown-item-text"><strong>{{ auth()->user()->name }}</strong></span></li><hr>
                         <li><a class="dropdown-item" href="#"><i class="bi bi-person"></i> Perfil</a></li>
-                        <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i></i> Configuración</a></li>
+                        <li><a class="dropdown-item" href="/home"><i class="bi bi-gear"></i></i> Configuración</a></li>
                         <li>
                             <form action="{{ route('logout') }}" method="post">
                                 @csrf
