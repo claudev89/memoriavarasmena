@@ -1,9 +1,12 @@
 <?php
 
 namespace App\Providers;
-use Illuminate\Pagination\Paginator;
 
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
+use App\Models\publicacion;
+use App\Policies\PublicacionPolicy;
+use Illuminate\Support\Facades\Gate;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -20,6 +23,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Gate::policy(publicacion::class, PublicacionPolicy::class);
+
         Paginator::useBootstrapFive();
         Paginator::useBootstrapFour();
     }

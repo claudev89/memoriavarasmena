@@ -11,6 +11,7 @@
 
     <div class="row mx-auto">
 
+        @hasanyrole('admin|editor')
         <div class="card text-white bg-danger me-2 mb-2" style="max-width: 18rem">
             <div class="card-body d-flex justify-content-between align-items-center">
                 <div>
@@ -25,7 +26,9 @@
                 <a href="{{ route('admin.publicaciones') }}" class="text-white font-weight-bold">Ver más <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
+        @endhasanyrole
 
+        @role('admin')
         <div class="card text-white bg-danger me-2 mb-2" style="max-width: 18rem">
             <div class="card-body d-flex justify-content-between align-items-center">
                 <div>
@@ -55,6 +58,7 @@
                 <a href="{{ route('admin.usuarios') }}" class="text-white font-weight-bold">Ver más <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
+        @endrole
 
     </div>
 

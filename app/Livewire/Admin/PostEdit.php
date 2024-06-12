@@ -2,13 +2,13 @@
 
 namespace App\Livewire\Admin;
 
+use App\Models\publicacion;
 use Illuminate\Validation\Rule;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
-use App\Models\Publicacion;
 use Livewire\WithFileUploads;
 
-class CreatePost extends Component
+class PostEdit extends Component
 {
     use WithFileUploads;
 
@@ -65,11 +65,10 @@ class CreatePost extends Component
         }
     }
 
-    public function createPost()
+    public function editPost()
     {
         $this->validate();
 
-        if($this->publicacion) {
             $updateData = [
                 'titulo' => $this->titulo,
                 'cuerpo' => $this->cuerpo,
@@ -79,27 +78,13 @@ class CreatePost extends Component
                 $updateData['imagen'] = $this->imagen->store('uploads', 'public');
             }
             $this->publicacion->update($updateData);
-        }
-        else
-        {
-            $this->publicacion = Publicacion::create([
-                'titulo' => $this->titulo,
-                'cuerpo' => $this->cuerpo,
-                'imagen' => $this->imagen->store('uploads', 'public'),
-                'user_id' => auth()->id()
-            ]);
-        }
-    }
 
-    public function publicarPost() {
-        session()->flash('publicado', 'Se ha publicado correctamente: <strong>'.$this->titulo.'</strong>');
+        session()->flash('publicado', 'Se ha editado correctamente: <strong>'.$this->titulo.'</strong>');
         return redirect()->to('admin/publicaciones');
     }
 
-
-
     public function render()
     {
-        return view('livewire.admin.create-post');
+        return view('livewire.admin.post-edit');
     }
 }

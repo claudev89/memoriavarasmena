@@ -1,12 +1,9 @@
 <div>
-    @section('head')
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    @endsection
-    <div class="modal modal-lg fade" id="createPost" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="createPost" aria-hidden="true" wire:ignore.self>
+    <div class="modal modal-lg fade" id="{{ $publicacion ? 'edit-post-'.$publicacion->id : 'createPost' }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="createPost" aria-hidden="true" wire:ignore.self>
         <div class="modal-dialog modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel"><i class="bi bi-file-earmark-plus"></i> Crear Publicación</h1>
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel"><i class="bi bi-file-earmark-plus"></i> {{ $publicacion ? 'Editar publicación : '.$publicacion->titulo : 'Crear publicación' }}</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -29,7 +26,7 @@
                         @error('imagen') <span class="small p-1 alert alert-danger">{{ $message }}</span> @enderror
                         @if(is_a($imagen, '\Illuminate\Http\UploadedFile'))
                             <img class="img-thumbnail w-25 h-auto mt-2" src="{{ $imagen->temporaryUrl() }}" />
-                        @elseif ($publicacion && $puplicacion->imagen)
+                        @elseif ($publicacion && $publicacion->imagen)
                             <img class="img-thumbnail w-25 h-auto mt-2" src="{{ asset('storage/'.$publicacion->imagen) }}" />
                         @endif
                         <div wire:loading wire:target="imagen">
@@ -96,6 +93,7 @@
                     }
                 });
 
+
                 document.getElementsByClassName("btn-codeview")[0].hidden = true;
                 document.getElementsByClassName("btn-fullscreen")[0].hidden = true;
 
@@ -119,7 +117,6 @@
                 });
 
             });
-
 
         </script>
     @endpush
