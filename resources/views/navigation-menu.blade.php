@@ -16,12 +16,7 @@
                     <a class="nav-link text-white {{ (request()->is('contacto')) ? 'bg-secondary bg-opacity-75' : '' }}" href="#">Contacto</a>
                 </li>
             </ul>
-            <form class="d-flex mb-2 mb-lg-0" role="search">
-                <div class="input-group">
-                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
-                    <input type="text" class="form-control" placeholder="Buscar" aria-label="search" aria-describedby="basic-addon1">
-                </div>
-            </form>
+            @livewire('search-bar')
             @auth()
                 <div class="dropdown">
                     <img src="{{ auth()->user()->profile_photo_url }}" id="userMenu" class="btn btn-secondary dropdown-toggle rounded-circle p-0 ms-2 mt-0 mb-lg-0 mb-2" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="width: 3rem; height: 3rem;" />

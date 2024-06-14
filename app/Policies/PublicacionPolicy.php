@@ -32,13 +32,19 @@ class PublicacionPolicy
         //
     }
 
+    public function edit(User $user, Publicacion $publicacion): bool
+    {
+        return $user->hasRole('admin') || ($user->hasRole('editor') && $user->id === $publicacion->user_id);
+    }
+
     /**
      * Determine whether the user can update the model.
      */
     public function update(User $user, Publicacion $publicacion): bool
     {
-        //
+        return $user->hasRole('admin') || ($user->hasRole('editor') && $user->id === $publicacion->user_id);
     }
+
 
     /**
      * Determine whether the user can delete the model.

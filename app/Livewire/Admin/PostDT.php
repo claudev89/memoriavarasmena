@@ -13,6 +13,7 @@ class PostDT extends Component
     use WithPagination;
 
     public $perPage = 15;
+    public $search = '';
 
     public function render()
     {
@@ -23,6 +24,6 @@ class PostDT extends Component
             $publicaciones = Publicacion::orderBy('created_at', 'desc')->paginate($this->perPage);
         }
 
-        return view('livewire.admin.post-d-t', ['publicaciones' => $publicaciones]);
+        return view('livewire.admin.post-d-t', ['publicaciones' => Publicacion::search($this->search)->paginate($this->perPage)]);
     }
 }

@@ -15,4 +15,8 @@ class publicacion extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function scopeSearch($query, $value) {
+        $query->where('titulo', 'LIKE', "%{$value}%");
+    }
 }

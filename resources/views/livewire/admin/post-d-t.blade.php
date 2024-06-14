@@ -1,4 +1,14 @@
 <div>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
+        <input
+            wire:model.live.debounce.300ms="search"
+            type="text"
+            class="form-control"
+            placeholder="Buscar"
+            aria-label="Titulo"
+            aria-describedby="basic-addon1">
+    </div>
     <table class="table table-striped">
         <thead>
         <tr>
