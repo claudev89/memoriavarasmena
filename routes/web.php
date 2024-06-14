@@ -34,7 +34,7 @@ Route::prefix('admin')->middleware('role:admin')->group( function () {
 });
 
 Route::get('/publicacion/{publicacion}', [PublicacionController::class, 'show'])->name('publicacion.show');
-Route::get('/publicacion/{publicacion}/editar', [PublicacionController::class, 'edit'])->name('publicacion.edit')->middleware('role:admin|editor');
+Route::get('/publicacion/{publicacion}/editar', [PublicacionController::class, 'edit'])->name('publicacion.edit')->middleware('can:edit,publicacion');
 Route::get('/publicacion/{publicacion}/eliminar', [PublicacionController::class, 'destroy'])->name('publicacion.delete')->middleware('can:delete,publicacion');
 
 Route::get('/perfil', function () { return view('perfil'); })->name('perfil')->middleware(AuthenticateMiddleware::class);
