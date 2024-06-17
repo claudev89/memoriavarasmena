@@ -29,6 +29,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'profile_photo_url'
     ];
 
     /**
@@ -48,9 +49,6 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $appends = [
-        'profile_photo_url',
-    ];
 
     /**
      * Get the attributes that should be cast.
@@ -63,6 +61,14 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function mostrarFotoDePerfil(User $usuario) {
+        if(!is_null($usuario->profile_photo_path)) {
+            return asset('storage/'.$usuario->profile_photo_path);
+        } else {
+            return $usuario->profile_photo_url;
+        }
     }
 
     public function publicaciones()
