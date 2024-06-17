@@ -18,12 +18,12 @@ class PostDT extends Component
     public function render()
     {
         if(auth()->user()->hasRole('editor')) {
-            $publicaciones = Publicacion::where('user_id', auth()->id())->orderBy('created_at', 'desc')->paginate($this->perPage);
+            $publicaciones = Publicacion::where('user_id', auth()->id())->orderBy('created_at', 'desc')->search($this->search)->paginate($this->perPage);
         }
         elseif (auth()->user()->hasRole('admin')) {
-            $publicaciones = Publicacion::orderBy('created_at', 'desc')->paginate($this->perPage);
+            $publicaciones = Publicacion::orderBy('created_at', 'desc')->search($this->search)->paginate($this->perPage);
         }
 
-        return view('livewire.admin.post-d-t', ['publicaciones' => Publicacion::search($this->search)->paginate($this->perPage)]);
+        return view('livewire.admin.post-d-t', ['publicaciones' => $publicaciones]);
     }
 }

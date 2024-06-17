@@ -28,6 +28,7 @@
         <footer>
             @include('includes.footer')
         </footer>
+
     </div>
 @stack('js')
 </body>
