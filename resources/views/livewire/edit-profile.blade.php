@@ -22,11 +22,16 @@
                 <div class="modal fade" id="fotoDePerfil" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Foto de perfil</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
                             <div class="modal-body">
+                                <div class="text-end">
+                                    <button
+                                        type="button"
+                                        class="btn-close"
+                                        data-bs-dismiss="modal"
+                                        aria-label="Cerrar"
+                                        title="Cerrar">
+                                    </button>
+                                </div>
                                 <img src="{{ $usuarix->mostrarFotoDePerfil($usuarix) }}" class="img-fluid">
                             </div>
                         </div>
