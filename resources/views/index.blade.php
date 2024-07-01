@@ -8,8 +8,10 @@
     <main class="col-12 container">
         <div class="row">
             <div class="row col-lg-8 col-md-7 col-12">
-                @include('includes.quotes')
-                @include('includes.quotes')
+                @php($citas = \App\Models\Obra::inRandomOrder()->limit(2)->get())
+                @foreach($citas as $cita)
+                    @include('includes.quotes', ['citas' => $citas])
+                @endforeach
                 <section name="posts" class="my-3">
                     @livewire('post-preview')
                 </section>

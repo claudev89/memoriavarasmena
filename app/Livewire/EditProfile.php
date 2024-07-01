@@ -80,7 +80,7 @@ class EditProfile extends Component
         $this->usuarix->save();
 
         $this->dispatch('datosCambiados');
-        session()->flash('guardado', 'Datos guardados correctamente');
+        session()->flash('guardado', 'Datos guardados correctamente.');
     }
 
     public function updatedImagen()
@@ -91,7 +91,7 @@ class EditProfile extends Component
             $this->usuarix->save();
 
             $this->dispatch('datosCambiados');
-            session()->flash('guardado', 'Foto de perfil cambiada correctamente');
+            session()->flash('guardado', 'Foto de perfil cambiada correctamente.');
         }
     }
 
@@ -99,7 +99,7 @@ class EditProfile extends Component
         if(Hash::check($this->contrasenia, $this->contraseniaActual)) {
             $this->usuarix->password = Hash::make($this->contraseniaNueva);
             $this->usuarix->save();
-            session()->flash('guardado', 'Contraseña cambiada correctamente');
+            session()->flash('guardado', 'Contraseña cambiada correctamente.');
             $this->contrasenia = "";
             $this->contraseniaNueva = "";
             $this->contraseniaX2 = "";

@@ -13,7 +13,7 @@
 
     <div class="container mb-1 mx-0">
         <h4>Redes sociales:</h4>
-        <a href="#" class="btn"><i class="bi bi-facebook text-primary"></i> Facebook</a> <br>
+        <a href="#" class="btn"><i class="bi bi-facebook" style="color: #0d6ef2"></i> Facebook</a> <br>
         <a href="#" class="btn"><i class="bi bi-youtube text-danger"></i> YouTube</a> <br>
         <a href="#" class="btn"><i class="bi bi-instagram" style="color: #ac2bac"></i> Instagram</a> <br>
         <a href="#" class="btn"><i class="bi bi-threads"></i> Threads</a> <br>
