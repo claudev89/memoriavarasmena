@@ -3,5 +3,11 @@
 @section('titulo', 'Usuarios')
 
 @section('contenido')
-    TODO: Crear CRUD de usuarios.
+    @livewire('admin.includes.user-list')
+
+    <script>
+        $(function() {
+            $('.tulti').tooltip();
+        });
+    </script>
 @endsection
