@@ -3,14 +3,20 @@
 @section('titulo', 'Configuración')
 
 @section('contenido')
+    @livewire('admin.includes.basic-info')
+    @livewire('admin.includes.carrusel')
+    @livewire('admin.includes.redes-sociales')
+    @livewire('admin.includes.pie-de-pagina')
+
     <p>Configuración de la página</p>
     <ul>
-        <li>Nombre de la página</li>
-        <li>Logo</li>
-        <li>Llamado a la acción</li>
-        <li>Slider</li>
-        <li>Redes sociales</li>
         <li>Footer</li>
         <li>Texto para mostrar y dirección de correo para recibir el mensaje de contáctanos</li>
     </ul>
+
+    <script>
+        $(function() {
+            $('.tulti').tooltip();
+        });
+    </script>
 @endsection

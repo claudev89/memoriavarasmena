@@ -1,6 +1,6 @@
 <div>
     <div class="card">
-        <div class="card-header bg-secondary text-white">
+        <div class="card-header">
             Información básica
         </div>
         <div class="card-body">
@@ -87,7 +87,7 @@
     </div>
 
     <div class="card mt-3">
-        <div class="card-header bg-secondary text-white">
+        <div class="card-header">
             Cambiar contraseña
         </div>
         <div class="card-body">
