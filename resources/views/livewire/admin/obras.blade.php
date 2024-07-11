@@ -37,7 +37,7 @@
                 <td>
                     <div class="btn-group">
                         @include('admin.includes.obraModal')
-                        <btn class="btn px-0 me-1" title="Ver" data-bs-toggle="modal" data-bs-target="#verObra-{{ $obra->id }}"><i class="bi bi-eye"></i></btn>
+                        <button class="btn px-0 me-1" title="Ver" data-bs-toggle="modal" data-bs-target="#verObra-{{ $obra->id }}"><i class="bi bi-eye"></i></button>
                         <a class="btn px-0 me-1" href="#" title="Editar" data-bs-toggle="modal" data-bs-target="#agregarObra" id="btnAgregarObra" wire:click="$dispatch('asignar-obra', { obraId: {{ $obra->id }} })"><i class="bi bi-pencil"></i></a>
                         <a class="btn px-0 me-1" href="#" title="Eliminar" data-bs-toggle="modal" data-bs-target="#eliminar-obra-{{ $obra->id }}" ><i class="bi bi-x-circle text-danger"></i></a>
 
