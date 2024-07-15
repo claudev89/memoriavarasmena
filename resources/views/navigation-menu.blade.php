@@ -1,7 +1,7 @@
 @php($nombreApp = \App\Models\Info::find(1)->nombre)
 <nav class="navbar navbar-expand-lg bg-body-tertiary col-11 col-lg-10 mx-auto">
     <div class="container-fluid bg-dark rounded px-3 py-1">
-        <a class="navbar-brand text-white" href="/">{{ strtoupper($nombreApp) }} </a>
+        <a class="navbar-brand text-white" href="/"><img src="{{ asset('storage/'.\App\Models\Info::find(1)->logo) }}" class="me-1" style="width: 3rem"> {{ strtoupper($nombreApp) }} </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <i class="bi bi-list text-white"></i>
         </button>
