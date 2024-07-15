@@ -2,7 +2,7 @@
 
 <div class="container my-0">
     <div class="p-3 text-center bg-body-tertiary rounded-3">
-        <img src="{{ asset('storage/'.$info->logo) }}" class="img-fluid">
+        <img src="{{ asset('storage/'.$info->logo) }}" class="img-fluid" style="max-height: 20rem">
         <h1 class="text-body-emphasis">{{ $info->nombre }}</h1>
         <p class="col-lg-8 mx-auto fs-5 text-muted">
             {!! Str::limit($info->quienes_somos, 640) !!}

@@ -26,9 +26,21 @@ class RedesSociales extends Component
 
     public function guardarCambios()
     {
-        if ($this->threads != '') {
-            // guardar y hacer lo mismo con el resto de las variables.
-        }
+        $facebook = RedSocial::where('nombre', 'LIKE', 'Facebook')->first();
+        $youtube = RedSocial::where('nombre', 'LIKE', 'YouTube')->first();
+        $instagram = RedSocial::where('nombre', 'LIKE', 'Instagram')->first();
+        $threads = RedSocial::where('nombre', 'LIKE', 'Threads')->first();
+        $x = RedSocial::where('nombre', 'LIKE', 'X')->first();
+        $whatsapp = RedSocial::where('nombre', 'LIKE', 'Whatsapp')->first();
+
+        $facebook->update(['url' => $this->facebook]);
+        $youtube->update(['url' => $this->youtube]);
+        $instagram->update(['url' => $this->instagram]);
+        $threads->update(['url' => $this->threads]);
+        $x->update(['url' => $this->x]);
+        $whatsapp->update(['url' => $this->whatsapp]);
+
+        session()->flash('publicado', 'Cambios guardados correctamente.');
     }
 
     public function render()

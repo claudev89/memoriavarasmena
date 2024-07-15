@@ -11,4 +11,5 @@ class RedSocial extends Model
     protected $table = 'social_media';
     protected $fillable = ['nombre', 'url'];
     protected $hidden = ['id'];
+    public $timestamps = false;
 }
