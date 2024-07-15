@@ -40,4 +40,15 @@
         <button wire:click="guardarCambios" class="btn btn-primary"><i class="bi bi-floppy"></i> Guardar</button>
     </div>
 
+    @if(session('publicado'))
+        <div class="toast align-items-center text-bg-success border-0 show bottom-0 end-0 position-fixed mb-3 me-3" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    {{ session('publicado') }}
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    @endif
+
 </div>
