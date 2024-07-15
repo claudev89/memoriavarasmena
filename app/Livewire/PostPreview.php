@@ -5,7 +5,6 @@ namespace App\Livewire;
 use App\Models\publicacion;
 use Livewire\Component;
 use Livewire\WithPagination;
-
 class PostPreview extends Component
 {
     use WithPagination;

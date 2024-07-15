@@ -9,7 +9,7 @@ class Info extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['quienes_somos', 'logo', 'nombre'];
+    protected $fillable = ['quienes_somos', 'logo', 'nombre', 'footer'];
     protected $hidden = ['id'];
 
     protected $table = 'site_conf';
