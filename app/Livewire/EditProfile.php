@@ -21,6 +21,7 @@ class EditProfile extends Component
 
     #[Validate()]
     public $correo;
+
     #[Validate()]
     public $contrasenia;
 

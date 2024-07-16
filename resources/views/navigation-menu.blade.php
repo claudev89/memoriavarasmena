@@ -25,7 +25,7 @@
                 <li class="nav-item">
                     <a
                         class="nav-link text-white {{ (request()->is('contacto')) ? 'bg-secondary bg-opacity-75' : '' }}"
-                        href="#">
+                        href="{{ route('contacto') }}">
                         Contacto
                     </a>
                 </li>
