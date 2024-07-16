@@ -22,6 +22,7 @@ Auth::routes();
 
 Route::get('/home', function () { return view('admin.index'); })->name('admin')->middleware('role:admin|editor');
 Route::get('/quienes-somos', function () { return view('quienes-somos'); })->name('quienes-somos');
+Route::get('/contacto', function () { return view('contacto'); })->name('contacto');
 
 Route::prefix('admin')->middleware('role:admin|editor')->group( function () {
     Route::get('/', function () { return view('admin.index'); })->name('admin');

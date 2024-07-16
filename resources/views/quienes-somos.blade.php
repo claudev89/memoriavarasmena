@@ -14,7 +14,7 @@
             </div>
 
             <div class="col-lg-4 col-md-5 col-12">
-                <div class="sticky-top" style="top: 20px;">
+                <div class="sticky-top z-0" style="top: 20px;">
                     @include('includes.sidebar')
                 </div>
             </div>
