@@ -14,9 +14,9 @@
                 Seguir leyendo
                 <i class="bi bi-arrow-right-short"></i>
             </a>
-            <button class="btn btn-outline-secondary btn-lg px-4 rounded-pill" type="button">
+            <a href="{{ route('contacto') }}" class="btn btn-outline-secondary btn-lg px-4 rounded-pill">
                 Contáctanos
-            </button>
+            </a>
         </div>
     </div>
 </div>
