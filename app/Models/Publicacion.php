@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class publicacion extends Model
 {
@@ -18,5 +19,15 @@ class publicacion extends Model
 
     public function scopeSearch($query, $value) {
         $query->where('titulo', 'LIKE', "%{$value}%");
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
+    public function getSlugAttribute()
+    {
+        return Str::slug($this->titulo);
     }
 }

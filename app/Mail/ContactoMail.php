@@ -5,6 +5,7 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
@@ -30,6 +31,7 @@ class ContactoMail extends Mailable
     {
         $subject = "Contacto - Memoria Varas Mena - ".$this->datosValidados['nombre'];
         return new Envelope(
+            from: new Address($this->datosValidados['correo'], $this->datosValidados['nombre']),
             subject: $subject,
         );
     }
