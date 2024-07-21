@@ -2,13 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
+
 class publicacion extends Model
 {
-    use HasFactory;
 
     protected $guarded = [];
 
@@ -23,11 +22,12 @@ class publicacion extends Model
 
     public function getRouteKeyName()
     {
-        return 'slug';
+        return 'id';
     }
 
     public function getSlugAttribute()
     {
         return Str::slug($this->titulo);
     }
+
 }

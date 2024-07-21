@@ -4,9 +4,11 @@
 
 @section('contenido')
 
-    @php($publicacionesCtd = \App\Models\publicacion::count())
+    @php($usuario = auth()->user())
+    @php($publicacionesCtd = $usuario->hasRole('editor') && !$usuario->hasRole('admin') ? \App\Models\publicacion::where('user_id', $usuario->id)->count() : \App\Models\publicacion::count() )
     @php($usuariosCtd = \App\Models\User::count())
     @php($obraCtd = \App\Models\Obra::count())
+
 
 
     <div class="row mx-auto">

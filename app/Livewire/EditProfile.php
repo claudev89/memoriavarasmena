@@ -54,7 +54,7 @@ class EditProfile extends Component
             'imagen.max' => 'La imagen no puede sobrepasar los 8 MB.',
             'nombre.required' => 'El nombre no puede estar en blanco.',
             'nombre.max' => 'El nombre no puede tener más de 255 caracteres.',
-            'correo.required' => 'El nombre no puede estar en blanco.',
+            'correo.required' => 'El correo no puede estar en blanco.',
             'correo.email' => 'Ingrese un correo válido.',
             'contrasenia.required' => 'Ingrese la contraseña actual.',
             'contraseniaNueva.required' => 'Ingrese una contraseña nueva.',

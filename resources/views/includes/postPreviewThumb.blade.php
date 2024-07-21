@@ -1,4 +1,4 @@
-<a class="text-reset" href="{{route('publicacion.show', $publicacion)}}" style="text-decoration: none">
+<a class="text-reset" href="{{route('publicacion.show', $publicacion->slug)}}" style="text-decoration: none">
     <div class="card mb-2">
         <div class="row g-0">
             <div class="col-md-4 my-auto" style="height: 6rem">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\publicacion;
+use Illuminate\Support\Str;
 
 class PublicacionController extends Controller
 {
@@ -34,8 +35,16 @@ class PublicacionController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(publicacion $publicacion)
+    public function show($slug)
     {
+        $publicacion = Publicacion::all()->first(function ($publicacion) use ($slug) {
+            return $publicacion->slug === $slug;
+        });
+
+        if(!$publicacion) {
+            abort(404);
+        }
+
         return view('publicacion.show', compact('publicacion'));
     }
 

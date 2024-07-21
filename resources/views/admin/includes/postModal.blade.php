@@ -11,7 +11,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <a type="button" class="btn btn-danger" href="{{route('publicacion.show', $publicacion)}}" target="_blank">Ir al post <i class="bi bi-arrow-right-circle"></i></a>
+                <a type="button" class="btn btn-danger" href="{{route('publicacion.show', $publicacion->slug)}}" target="_blank">Ir a la publicación <i class="bi bi-arrow-right-circle"></i></a>
             </div>
         </div>
     </div>
