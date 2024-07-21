@@ -8,7 +8,7 @@
     <ul class="dropdown-menu {{ strlen($search) >= 3 ? 'show' : '' }}">
         @forelse($publicaciones as $publicacion)
             <li>
-                <a class="dropdown-item border-top border-bottom btn" href="{{ route('publicacion.show', $publicacion) }}" title="{{ $publicacion->titulo }}">
+                <a class="dropdown-item border-top border-bottom btn" href="{{ route('publicacion.show', $publicacion->slug) }}" title="{{ $publicacion->titulo }}">
                     <div class="row py-1">
                         <div class="col-2 px-0">
                             <img src="{{ asset('/storage/'.$publicacion->imagen) }}" class="img-fluid">
