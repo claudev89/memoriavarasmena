@@ -43,28 +43,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#postPreview" wire:click="createPost" @if(count($errors) > 0) disabled @endif >Vista Previa</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div wire:ignore.self class="modal modal-lg fade" id="postPreview" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="postPreview" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Vista Previa - {{ $publicacion?->titulo }}</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    @if(isset($publicacion->imagen))
-                        <img src="{{ asset('storage/'.$publicacion?->imagen) }}" class="img-fluid" /> <br>
-                    @endif
-                    {!! $publicacion?->cuerpo !!} <br>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#createPost">Editar</button>
-                    <button type="button" class="btn btn-danger" wire:click="publicarPost">Publicar</button>
+                    <button type="button" class="btn btn-danger" wire:click="createPost" @if(count($errors) > 0) disabled @endif >Publicar</button>
                 </div>
             </div>
         </div>

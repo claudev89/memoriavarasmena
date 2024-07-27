@@ -88,15 +88,10 @@ class CreatePost extends Component
                 'imagen' => $this->imagen->store('uploads', 'public'),
                 'user_id' => auth()->id()
             ]);
+            session()->flash('publicado', 'Se ha publicado correctamente: <strong>'.$this->titulo.'</strong>');
+            return redirect()->to('admin/publicaciones');
         }
     }
-
-    public function publicarPost() {
-        session()->flash('publicado', 'Se ha publicado correctamente: <strong>'.$this->titulo.'</strong>');
-        return redirect()->to('admin/publicaciones');
-    }
-
-
 
     public function render()
     {

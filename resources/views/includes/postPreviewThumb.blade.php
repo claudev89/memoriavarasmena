@@ -5,9 +5,9 @@
                 <img src="{{ asset('storage/'.$publicacion?->imagen) }}" class="object-fit-cover w-100 img-fluid rounded ms-1" alt="{{ $titulo }}"  style="max-height: 6rem">
             </div>
             <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title">{{ $titulo }}</h5>
-                    <p class="card-text text-truncate">{!! Str::limit($cuerpo, 30) !!}</p>
+                <div class="card-body pb-1">
+                    <h5 class="card-title" title="{{ $titulo }}">{{ Str::limit( $titulo, 46) }}</h5>
+                    <span class="card-text text-truncate">{!! Str::limit($cuerpo, 30) !!}</span>
                 </div>
             </div>
         </div>
