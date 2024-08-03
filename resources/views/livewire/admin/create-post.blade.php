@@ -1,13 +1,13 @@
 <div>
-    <div class="modal modal-lg fade" id="{{ $publicacion ? 'edit-post-'.$publicacion->id : 'createPost' }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="createPost" aria-hidden="true" wire:ignore.self>
+    <div class="modal modal-lg fade" id="createPost" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="createPost" aria-hidden="true" wire:ignore.self>
         <div class="modal-dialog modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel"><i class="bi bi-file-earmark-plus"></i> {{ $publicacion ? 'Editar publicación : '.$publicacion->titulo : 'Crear publicación' }}</h1>
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel"><i class="bi bi-file-earmark-plus"></i> Crear publicación</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="form-floating mb-3">
+                    <div class="form-floating mb-2">
                         <input wire:model.live.debounce.300ms="titulo" type="text" class="form-control @error('titulo') is-invalid @else is-valid @enderror" id="titulo" placeholder="Título del Post" maxlength="200">
                         <label for="title">Título de la publicación</label>
                         <div class="d-flex">
@@ -18,6 +18,22 @@
                             </div>
                             <span class="d-flex small text-secondary text-end ms-2 flex-shrink-1">{{ strlen($titulo) }}/200</span>
                         </div>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <select
+                            wire:model.live="categoria"
+                            class="form-select @error('categoria') is-invalid @else is-valid @enderror"
+                            id="categoria" aria-label="Categoría">
+                            <option selected>Seleccione una categoría</option>
+                            @foreach($categorias as $categoria)
+                                <option value="{{ $categoria->id }}">{{ $categoria->nombre }}</option>
+                            @endforeach
+                        </select>
+                        <label for="floatingSelect">Categoría</label>
+                        @error('categoria')
+                            <span class="small alert alert-danger p-1">{{ $message }}</span>
+                        @enderror
                     </div>
 
                     <div class="form-floating mb-3">
@@ -35,7 +51,7 @@
                             Subiendo imagen...
                         </div>
                     </div>
-                    <div class="form-floating mb-3" wire:ignore>
+                    <div class="form-floating mb-2" wire:ignore>
                         Cuerpo de la publicación
                         <textarea id="summernote" name="editordata" class="form-control" placeholder="Cuerpo de la publicación" style="height: 100px">{{ $cuerpo }}</textarea>
                     </div>
@@ -43,7 +59,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-danger" wire:click="createPost" @if(count($errors) > 0) disabled @endif >Publicar</button>
+                    <button type="button" class="btn btn-danger" wire:click="createPost" @if(count($errors) > 0) disabled @endif  data-bs-dismiss="modal">Publicar</button>
                 </div>
             </div>
         </div>

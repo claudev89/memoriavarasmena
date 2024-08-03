@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin;
 
+use Livewire\Attributes\On;
 use Livewire\Component;
 use App\Models\Publicacion;
 use Livewire\Attributes\Url;
@@ -15,6 +16,7 @@ class PostDT extends Component
     public $perPage = 15;
     public $search = '';
 
+    #[On('postCreado')]
     public function render()
     {
         if(auth()->user()->hasRole('editor')) {

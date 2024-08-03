@@ -2,7 +2,9 @@
 
 namespace App\Livewire\Admin;
 
+use App\Models\Categoria;
 use Illuminate\Validation\Rule;
+use Livewire\Attributes\On;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 use App\Models\Publicacion;
@@ -19,9 +21,13 @@ class CreatePost extends Component
     public $titulo;
 
     #[Validate()]
+    public $categoria;
+
+    #[Validate()]
     public $cuerpo;
 
     public $publicacion;
+
 
     public function rules()
     {
@@ -34,6 +40,7 @@ class CreatePost extends Component
             'imagen' => $imageRules,
             'titulo' => ['required', 'max:200', Rule::unique('publicacions')->ignore($this->publicacion), ],
             'cuerpo' => 'required',
+            'categoria' => 'required',
         ];
     }
 
@@ -45,7 +52,8 @@ class CreatePost extends Component
             'titulo.required' => 'Escriba un título para la publicación',
             'titulo.max' => 'El título no puede sobrepasar los 200 caracteres de largo.',
             'titulo.unique' => 'Ya existe una publicación con este título.',
-            'cuerpo.required' => 'La publicación no puede estar en blanco.'
+            'cuerpo.required' => 'La publicación no puede estar en blanco.',
+            'categoria.required' => 'La categoría no puede estar en blanco.',
         ];
     }
 
@@ -68,33 +76,25 @@ class CreatePost extends Component
     public function createPost()
     {
         $this->validate();
-
-        if($this->publicacion) {
-            $updateData = [
-                'titulo' => $this->titulo,
-                'cuerpo' => $this->cuerpo,
-            ];
-
-            if($this->imagen instanceof \Illuminate\Http\UploadedFile) {
-                $updateData['imagen'] = $this->imagen->store('uploads', 'public');
-            }
-            $this->publicacion->update($updateData);
-        }
-        else
-        {
             $this->publicacion = Publicacion::create([
                 'titulo' => $this->titulo,
                 'cuerpo' => $this->cuerpo,
                 'imagen' => $this->imagen->store('uploads', 'public'),
-                'user_id' => auth()->id()
+                'user_id' => auth()->id(),
+                'categoria_id' => $this->categoria
             ]);
             session()->flash('publicado', 'Se ha publicado correctamente: <strong>'.$this->titulo.'</strong>');
+            $this->reset();
+            $this->dispatch('postCreado');
             return redirect()->to('admin/publicaciones');
-        }
     }
 
+    #[On('categoria-agregada')]
     public function render()
     {
-        return view('livewire.admin.create-post');
+        $categorias = Categoria::all()->sortBy(function ($categoria) {
+            return strtolower($categoria->nombre);
+        });
+        return view('livewire.admin.create-post', ['categorias' => $categorias]);
     }
 }

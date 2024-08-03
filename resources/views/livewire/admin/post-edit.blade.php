@@ -14,6 +14,22 @@
         </div>
 
         <div class="form-floating mb-3">
+            <select
+                wire:model.live="categoria"
+                class="form-select @error('categoria') is-invalid @else is-valid @enderror"
+                id="categoria" aria-label="Categoría">
+                <option selected>Seleccione una categoría</option>
+                @foreach($categorias as $categoria)
+                    <option value="{{ $categoria->id }}">{{ $categoria->nombre }}</option>
+                @endforeach
+            </select>
+            <label for="floatingSelect">Categoría</label>
+            @error('categoria')
+            <span class="small alert alert-danger p-1">{{ $message }}</span>
+            @enderror
+        </div>
+
+        <div class="form-floating mb-3">
             <input wire:model="imagen" accept="image/png, image/jpeg" type="file" class="form-control  @error('imagen') is-invalid @else is-valid @enderror" id="imagen">
             <label for="imagen">Imagen principal de la publicación</label>
             @error('imagen') <span class="small p-1 alert alert-danger">{{ $message }}</span> @enderror

@@ -14,12 +14,16 @@
         </div>
     @endif
 
-    <div class="d-flex justify-content-end mb-3">
+    <livewire:admin.includes.categorias />
+    <div class="d-flex justify-content-between mb-3">
+        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#categorias">
+            <i class="bi bi-folder"></i> Ver categorías
+        </button>
         <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#createPost">
             <i class="bi bi-file-earmark-plus"></i> Crear publicación
         </button>
-        <livewire:admin.createPost />
     </div>
+    <livewire:admin.createPost />
     <div class="container">
         <livewire:admin.post-d-t />
     </div>

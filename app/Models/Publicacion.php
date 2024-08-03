@@ -30,4 +30,9 @@ class publicacion extends Model
         return Str::slug($this->titulo);
     }
 
+    public function categoria()
+    {
+        return $this->belongsTo(Categoria::class);
+    }
+
 }

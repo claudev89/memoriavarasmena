@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin;
 
+use App\Models\Categoria;
 use App\Models\publicacion;
 use Illuminate\Validation\Rule;
 use Livewire\Attributes\Validate;
@@ -23,6 +24,9 @@ class PostEdit extends Component
 
     public $publicacion;
 
+    #[Validate()]
+    public $categoria;
+
     public function rules()
     {
         if($this->publicacion) {
@@ -34,6 +38,7 @@ class PostEdit extends Component
             'imagen' => $imageRules,
             'titulo' => ['required', 'max:200', Rule::unique('publicacions')->ignore($this->publicacion), ],
             'cuerpo' => 'required',
+            'categoria' => 'required',
         ];
     }
 
@@ -45,7 +50,8 @@ class PostEdit extends Component
             'titulo.required' => 'Escriba un título para la publicación',
             'titulo.max' => 'El título no puede sobrepasar los 200 caracteres de largo.',
             'titulo.unique' => 'Ya existe una publicación con este título.',
-            'cuerpo.required' => 'La publicación no puede estar en blanco.'
+            'cuerpo.required' => 'La publicación no puede estar en blanco.',
+            'categoria.required' => 'La categoría no puede estar en blanco.',
         ];
     }
 
@@ -53,6 +59,7 @@ class PostEdit extends Component
         if($publicacion) {
             $this->publicacion = $publicacion;
             $this->titulo = $this->publicacion->titulo;
+            $this->categoria = $this->publicacion->categoria_id;
             $this->imagen = $this->publicacion->imagen;
             $this->cuerpo = $this->publicacion->cuerpo;
         }
@@ -71,6 +78,7 @@ class PostEdit extends Component
 
             $updateData = [
                 'titulo' => $this->titulo,
+                'categoria_id' => $this->categoria,
                 'cuerpo' => $this->cuerpo,
             ];
 
@@ -85,6 +93,9 @@ class PostEdit extends Component
 
     public function render()
     {
-        return view('livewire.admin.post-edit');
+        $categorias = Categoria::all()->sortBy(function ($categoria) {
+            return strtolower($categoria->nombre);
+        });
+        return view('livewire.admin.post-edit', ['categorias' => $categorias]);
     }
 }

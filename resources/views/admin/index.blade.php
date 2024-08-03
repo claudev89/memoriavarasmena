@@ -14,7 +14,7 @@
     <div class="row mx-auto">
 
         @hasanyrole('admin|editor')
-        <div class="card text-white bg-danger me-2 mb-2" style="max-width: 18rem">
+        <div class="card text-white bg-danger bg-gradient me-2 mb-2" style="max-width: 18rem">
             <div class="card-body d-flex justify-content-between align-items-center">
                 <div>
                     <h2 class="card-title mb-0">{{ $publicacionesCtd }}</h2>
@@ -31,7 +31,7 @@
         @endhasanyrole
 
         @role('admin')
-        <div class="card text-white bg-danger me-2 mb-2" style="max-width: 18rem">
+        <div class="card text-white bg-danger bg-gradient me-2 mb-2" style="max-width: 18rem">
             <div class="card-body d-flex justify-content-between align-items-center">
                 <div>
                     <h2 class="card-title mb-0">{{ $obraCtd }}</h2>
@@ -46,7 +46,7 @@
             </div>
         </div>
 
-        <div class="card text-white bg-danger mb-2" style="max-width: 18rem">
+        <div class="card text-white bg-danger bg-gradient mb-2" style="max-width: 18rem">
             <div class="card-body d-flex justify-content-between align-items-center">
                 <div>
                     <h2 class="card-title mb-0">{{ $usuariosCtd }}</h2>
@@ -65,3 +65,10 @@
     </div>
 
 @endsection
+
+<style>
+    .bg-success {
+        --bs-bg-opacity: 1;
+        background-color: rgba(var(--bs-success-rgb), var(--bs-bg-opacity)) !important;
+    }
+</style>
