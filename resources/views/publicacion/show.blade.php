@@ -7,7 +7,10 @@
                 <div class="card p-0">
                     <div class="card-body">
                         <h3 class="card-title text-uppercase">{{ $publicacion->titulo }}</h3>
-                        <span class="small text-secondary">Publicado el {{ \Carbon\Carbon::parse($publicacion->created_at)->translatedFormat('j \\de F \\de Y \\a \\l\\a\\s H:i \\h\\r\\s') }}.</span>
+                        <div class="position-relative">
+                            <span class="small text-secondary">Publicado el {{ \Carbon\Carbon::parse($publicacion->created_at)->translatedFormat('j \\de F \\de Y \\a \\l\\a\\s H:i \\h\\r\\s') }}.</span>
+                            <span class="position-absolute end-0 small text-secondary">Publicación #{{ str_pad($publicacion->id, 6, 0, STR_PAD_LEFT) }}</span>
+                        </div>
                         <p><img src="{{ asset('storage/'.$publicacion?->imagen) }}" class="img-fluid mt-2"></p>
                         <p class="card-text mt-2">{!! $publicacion->cuerpo !!}</p>
                     </div>
